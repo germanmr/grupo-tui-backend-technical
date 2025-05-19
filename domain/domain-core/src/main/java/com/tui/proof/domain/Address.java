@@ -1,4 +1,4 @@
-package com.tui.proof.model;
+package com.tui.proof.domain;
 
 import lombok.Data;
 
