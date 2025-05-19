@@ -23,7 +23,7 @@
         <module>container</module>
         <module>dataaccess</module>
         <module>domain</module>
-        <module>domain/application-services</module>
+        <module>domain/application-service</module>
         <module>domain/domain-core</module>
         <module>jacoco-aggregate</module>
     </modules>
