@@ -11,7 +11,7 @@ import lombok.Data;
 public final class Order {
   private final OrderNumber number;
   private final Client client;
-  private final Quantity pilotes;
+  private final Product product;
+  private final Quantity quantity;
   private final MonetaryAmount orderTotal;
-
 }

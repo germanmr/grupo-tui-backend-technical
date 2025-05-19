@@ -17,14 +17,11 @@
 
     <name>backend-technical-test</name>
     <description>Create an Api rest that allows us to order the "pilotes" of the great Miquel Montoro</description>
-
     <modules>
         <module>application</module>
         <module>container</module>
-        <module>dataaccess</module>
         <module>domain</module>
-        <module>domain/application-service</module>
-        <module>domain/domain-core</module>
+        <module>dataaccess</module>
         <module>jacoco-aggregate</module>
     </modules>
 
@@ -96,21 +93,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>com.tui.proof.MainApplication</mainClass>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

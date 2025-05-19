@@ -8,10 +8,15 @@
     </parent>
 
     <artifactId>domain</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>domain</name>
     <url>http://maven.apache.org</url>
+
+    <modules>
+        <module>application-service</module>
+        <module>domain-core</module>
+    </modules>
 
     <properties>
     </properties>
