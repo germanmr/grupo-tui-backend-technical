@@ -1,6 +1,8 @@
 package com.tui.proof.domain.config;
 
 
+import com.tui.proof.domain.OrderDomainService;
+import com.tui.proof.domain.OrderDomainServiceImpl;
 import com.tui.proof.domain.ports.output.repository.ClientRepository;
 import com.tui.proof.domain.ports.output.repository.OrderRepository;
 import com.tui.proof.domain.ports.output.repository.ProductRepository;
@@ -24,6 +26,11 @@ public class TestConfig {
     @Bean
     public OrderRepository orderRepository() {
         return Mockito.mock(OrderRepository.class);
+    }
+
+    @Bean
+    public OrderDomainService orderDomainService() {
+        return new OrderDomainServiceImpl();
     }
 
 }

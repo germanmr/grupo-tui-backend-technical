@@ -1,4 +1,4 @@
-package com.tui.proof.application.rest;
+package com.tui.proof.domain.sampledata;
 
 import com.tui.proof.domain.entity.Address;
 import com.tui.proof.domain.entity.Client;
@@ -35,7 +35,7 @@ public interface OrderData {
             .telephone(Telephone.builder().value("+34 972 123456").build())
             .deliveryAddress(Address.builder()
                     .country(Country.builder().value("España").build())
-                    .postcode(PostalCode.builder().value("17538").build())
+                    .postalcode(PostalCode.builder().value("17538").build())
                     .city(City.builder().value("Das").build())
                     .street(Street.builder().value("Carrer Sant Eduar 1").build())
                     .build())

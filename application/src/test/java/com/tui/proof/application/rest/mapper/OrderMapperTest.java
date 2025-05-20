@@ -1,6 +1,6 @@
 package com.tui.proof.application.rest.mapper;
 
-import com.tui.proof.application.rest.OrderData;
+import com.tui.proof.domain.sampledata.OrderData;
 import com.tui.proof.application.rest.OrderDtoData;
 import com.tui.proof.domain.entity.Order;
 import com.tui.proof.domain.entity.OrderRequest;

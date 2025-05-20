@@ -1,5 +1,6 @@
 package com.tui.proof.domain.ports;
 
+import com.tui.proof.domain.OrderDomainService;
 import com.tui.proof.domain.config.TestConfig;
 import com.tui.proof.domain.entity.Address;
 import com.tui.proof.domain.entity.Client;
@@ -30,7 +31,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = {
@@ -46,11 +49,11 @@ class OrderApplicationServiceImplTest {
             .clientId(ClientId.builder().value(clientId).build())
             .firstName(Name.builder().value("Esteve").build())
             .lastName(Name.builder().value("Clerch").build())
-            .telephone(Telephone.builder().value("+34 971 123456").build())
+            .telephone(Telephone.builder().value("+34 972 123456").build())
             .deliveryAddress(Address.builder()
                     .country(Country.builder().value("España").build())
                     .city(City.builder().value("Das").build())
-                    .postcode(PostalCode.builder().value("17538").build())
+                    .postalcode(PostalCode.builder().value("17538").build())
                     .street(Street.builder().value("Carrer Sant Eduar 1").build())
                     .build())
             .build();
@@ -84,13 +87,16 @@ class OrderApplicationServiceImplTest {
     private ProductRepository productRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private OrderDomainService orderDomainService;
 
     @BeforeEach
     void init() {
         this.orderApplicationService = new OrderApplicationServiceImpl(
                 clientRepository,
                 productRepository,
-                orderRepository);
+                orderRepository,
+                orderDomainService);
     }
 
     @Test
@@ -110,16 +116,12 @@ class OrderApplicationServiceImplTest {
     }
 
     @Test
-    void can_order_product() {
+    void can_order_pilotes() {
         when(this.clientRepository.getClientById(ClientId.builder().value(clientId).build()))
                 .thenReturn(Optional.of(client));
         when(this.productRepository.getProductById(ProductId.builder().value(productId).build()))
                 .thenReturn(Optional.of(product));
-        when(this.orderRepository.createOrder(
-                ClientId.builder().value(clientId).build(),
-                ProductId.builder().value(productId).build(),
-                Quantity.builder().value(2L).build()))
-                .thenReturn(order);
+        when(this.orderRepository.createOrder(any())).thenReturn(order);
         assertEquals(order, this.orderApplicationService.createOrder(orderRequest));
     }
 }

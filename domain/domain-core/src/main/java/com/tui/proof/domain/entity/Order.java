@@ -9,9 +9,10 @@ import lombok.Data;
 @Builder
 @Data
 public final class Order {
-  private final OrderNumber number;
-  private final Client client;
-  private final Product product;
-  private final Quantity quantity;
-  private final MonetaryAmount orderTotal;
+    private final OrderNumber number;
+    private final Client client;
+    private final Product product;
+    private final Quantity quantity;
+    private final MonetaryAmount orderTotal;
+
 }

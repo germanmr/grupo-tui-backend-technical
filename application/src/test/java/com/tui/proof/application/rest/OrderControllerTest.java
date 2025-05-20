@@ -6,6 +6,7 @@ import com.tui.proof.domain.entity.Order;
 import com.tui.proof.domain.entity.OrderRequest;
 import com.tui.proof.domain.ports.OrderApplicationServiceImpl;
 import com.tui.proof.domain.ports.input.service.OrderApplicationService;
+import com.tui.proof.domain.sampledata.OrderData;
 import com.tui.proof.model.OrderRequestDto;
 import com.tui.proof.model.OrderResponseDto;
 import org.junit.jupiter.api.BeforeEach;

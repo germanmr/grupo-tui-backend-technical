@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public final class Address {
   private final Street street;
-  private final PostalCode postcode;
+  private final PostalCode postalcode;
   private final City city;
   private final Country country;
 }
