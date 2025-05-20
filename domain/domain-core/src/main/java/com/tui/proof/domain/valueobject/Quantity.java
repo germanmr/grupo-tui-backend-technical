@@ -6,5 +6,5 @@ import lombok.Data;
 @Builder
 @Data
 public class Quantity {
-    private final Integer value;
+    private final Long value;
 }

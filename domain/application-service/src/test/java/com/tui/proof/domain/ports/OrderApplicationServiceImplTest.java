@@ -44,8 +44,8 @@ class OrderApplicationServiceImplTest {
 
     private final Client client = Client.builder()
             .clientId(ClientId.builder().value(clientId).build())
-            .firstName(Name.builder().value("Germà").build())
-            .lastName(Name.builder().value("Muñoz").build())
+            .firstName(Name.builder().value("Esteve").build())
+            .lastName(Name.builder().value("Clerch").build())
             .telephone(Telephone.builder().value("+34 971 123456").build())
             .deliveryAddress(Address.builder()
                     .country(Country.builder().value("España").build())
@@ -66,13 +66,13 @@ class OrderApplicationServiceImplTest {
             OrderRequest.builder()
                     .clientId(ClientId.builder().value(clientId).build())
                     .productId(ProductId.builder().value(productId).build())
-                    .quantity(Quantity.builder().value(2).build())
+                    .quantity(Quantity.builder().value(2L).build())
                     .build();
     private final Order order = Order.builder()
             .number(OrderNumber.builder().value("1").build())
             .client(client)
             .product(product)
-            .quantity(Quantity.builder().value(2).build())
+            .quantity(Quantity.builder().value(2L).build())
             .orderTotal(MonetaryAmount.builder().value(new BigDecimal("22.50")).build())
             .build();
 
@@ -93,7 +93,6 @@ class OrderApplicationServiceImplTest {
                 orderRepository);
     }
 
-
     @Test
     void cannot_order_unexistent_client() {
         when(this.clientRepository.getClientById(ClientId.builder().value(clientId).build())).thenReturn(Optional.empty());
@@ -111,7 +110,7 @@ class OrderApplicationServiceImplTest {
     }
 
     @Test
-    void can_order_unexistent_product() {
+    void can_order_product() {
         when(this.clientRepository.getClientById(ClientId.builder().value(clientId).build()))
                 .thenReturn(Optional.of(client));
         when(this.productRepository.getProductById(ProductId.builder().value(productId).build()))
@@ -119,7 +118,7 @@ class OrderApplicationServiceImplTest {
         when(this.orderRepository.createOrder(
                 ClientId.builder().value(clientId).build(),
                 ProductId.builder().value(productId).build(),
-                Quantity.builder().value(2).build()))
+                Quantity.builder().value(2L).build()))
                 .thenReturn(order);
         assertEquals(order, this.orderApplicationService.createOrder(orderRequest));
     }
