@@ -14,6 +14,7 @@ class OrderMapperTest {
 
     private final OrderRequestDto orderRequestDto = OrderDtoData.anyOrderRequestDto();
     private final OrderResponseDto orderResponseDto = OrderDtoData.anyOrderResponseDto();
+
     private final OrderRequest orderRequest = OrderData.anyOrderRequest();
     private final Order order = OrderData.anyOrder();
 

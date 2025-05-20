@@ -26,7 +26,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/OrderResponse"
                 example:
-                  orderNumer: 123456
+                  orderNumber: a72253bb-9ac1-497e-b116-2a54ab618966
                   clientId: 1
                   productId: 1
                   quantity: 2
@@ -79,7 +79,7 @@ components:
           type: integer
           format: int64
           minimum: 1
-          description: A bigger than one quantity
+          description: A bigger than one number indicating quantity
     OrderResponse:
       type: object
       required:
@@ -91,7 +91,8 @@ components:
       properties:
         orderNumber:
           type: string
-          description:
+          format: uuid
+          description: The generated order number, uuid format
         clientId:
           type: integer
           format: int64
@@ -120,4 +121,4 @@ components:
           description: The error code
         message:
           type: string
-          description: A detail of what happened
+          description: A detail of what went wrong

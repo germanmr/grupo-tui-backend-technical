@@ -2,7 +2,6 @@ package com.tui.proof.domain.ports;
 
 import com.tui.proof.domain.OrderDomainService;
 import com.tui.proof.domain.config.TestConfig;
-import com.tui.proof.domain.entity.Address;
 import com.tui.proof.domain.entity.Client;
 import com.tui.proof.domain.entity.Order;
 import com.tui.proof.domain.entity.OrderRequest;
@@ -12,29 +11,21 @@ import com.tui.proof.domain.exception.ProductNotFoundException;
 import com.tui.proof.domain.ports.output.repository.ClientRepository;
 import com.tui.proof.domain.ports.output.repository.OrderRepository;
 import com.tui.proof.domain.ports.output.repository.ProductRepository;
-import com.tui.proof.domain.valueobject.City;
 import com.tui.proof.domain.valueobject.ClientId;
-import com.tui.proof.domain.valueobject.Country;
-import com.tui.proof.domain.valueobject.MonetaryAmount;
-import com.tui.proof.domain.valueobject.Name;
-import com.tui.proof.domain.valueobject.OrderNumber;
-import com.tui.proof.domain.valueobject.PostalCode;
 import com.tui.proof.domain.valueobject.ProductId;
-import com.tui.proof.domain.valueobject.Quantity;
-import com.tui.proof.domain.valueobject.Street;
-import com.tui.proof.domain.valueobject.Telephone;
+import com.tui.proof.domain.sampledata.OrderData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+
 
 @SpringBootTest(classes = {
         TestConfig.class
@@ -43,41 +34,14 @@ class OrderApplicationServiceImplTest {
 
     private final Long clientId = 1L;
     private final Long productId = 1L;
-    private final BigDecimal price = new BigDecimal("11.25");
 
-    private final Client client = Client.builder()
-            .clientId(ClientId.builder().value(clientId).build())
-            .firstName(Name.builder().value("Esteve").build())
-            .lastName(Name.builder().value("Clerch").build())
-            .telephone(Telephone.builder().value("+34 972 123456").build())
-            .deliveryAddress(Address.builder()
-                    .country(Country.builder().value("España").build())
-                    .city(City.builder().value("Das").build())
-                    .postalcode(PostalCode.builder().value("17538").build())
-                    .street(Street.builder().value("Carrer Sant Eduar 1").build())
-                    .build())
-            .build();
+    private final Client client = OrderData.anyClient();
 
-    private final Product product = Product.builder()
-            .productId(ProductId.builder().value(productId).build())
-            .name(Name.builder().value("S'aguiat de pilotes").build())
-            .price(MonetaryAmount.builder().value(price).build())
-            .build();
+    private final Product product = OrderData.anyProduct();
 
+    private final OrderRequest orderRequest = OrderData.anyOrderRequest();
 
-    private final OrderRequest orderRequest =
-            OrderRequest.builder()
-                    .clientId(ClientId.builder().value(clientId).build())
-                    .productId(ProductId.builder().value(productId).build())
-                    .quantity(Quantity.builder().value(2L).build())
-                    .build();
-    private final Order order = Order.builder()
-            .number(OrderNumber.builder().value("1").build())
-            .client(client)
-            .product(product)
-            .quantity(Quantity.builder().value(2L).build())
-            .orderTotal(MonetaryAmount.builder().value(new BigDecimal("22.50")).build())
-            .build();
+    private final Order order = OrderData.anyOrder();
 
     private OrderApplicationServiceImpl orderApplicationService;
 

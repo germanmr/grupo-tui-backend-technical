@@ -1,6 +1,5 @@
 package com.tui.proof.dataaccess.client.adapter;
 
-import com.tui.proof.dataaccess.OrderData;
 import com.tui.proof.dataaccess.OrderDataAccessData;
 import com.tui.proof.dataaccess.client.entity.ClientEntity;
 import com.tui.proof.dataaccess.client.mapper.ClientDataAccessMapper;
@@ -8,6 +7,7 @@ import com.tui.proof.dataaccess.client.mapper.ClientDataAccessMapperImpl;
 import com.tui.proof.dataaccess.client.repository.ClientJpaRepository;
 import com.tui.proof.dataaccess.config.DataAccessTestConfiguration;
 import com.tui.proof.domain.entity.Client;
+import com.tui.proof.domain.sampledata.OrderData;
 import com.tui.proof.domain.valueobject.ClientId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

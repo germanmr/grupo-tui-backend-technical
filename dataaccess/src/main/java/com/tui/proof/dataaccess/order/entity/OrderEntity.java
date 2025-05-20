@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +24,7 @@ import java.math.BigDecimal;
 @Entity
 public class OrderEntity {
     @Id
-    private String id;
+    private UUID id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")

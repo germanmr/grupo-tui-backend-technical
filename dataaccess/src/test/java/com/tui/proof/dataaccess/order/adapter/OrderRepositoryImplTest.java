@@ -1,6 +1,5 @@
 package com.tui.proof.dataaccess.order.adapter;
 
-import com.tui.proof.dataaccess.OrderData;
 import com.tui.proof.dataaccess.OrderDataAccessData;
 import com.tui.proof.dataaccess.config.DataAccessTestConfiguration;
 import com.tui.proof.dataaccess.order.entity.OrderEntity;
@@ -8,6 +7,7 @@ import com.tui.proof.dataaccess.order.mapper.OrderDataAccessMapper;
 import com.tui.proof.dataaccess.order.mapper.OrderDataAccessMapperImpl;
 import com.tui.proof.dataaccess.order.repository.OrderJpaRepository;
 import com.tui.proof.domain.entity.Order;
+import com.tui.proof.domain.sampledata.OrderData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

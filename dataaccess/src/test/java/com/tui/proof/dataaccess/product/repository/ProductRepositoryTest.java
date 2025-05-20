@@ -1,6 +1,5 @@
 package com.tui.proof.dataaccess.product.repository;
 
-import com.tui.proof.dataaccess.OrderData;
 import com.tui.proof.dataaccess.OrderDataAccessData;
 import com.tui.proof.dataaccess.config.DataAccessTestConfiguration;
 import com.tui.proof.dataaccess.product.adapter.ProductRepositoryImpl;
@@ -8,6 +7,7 @@ import com.tui.proof.dataaccess.product.entity.ProductEntity;
 import com.tui.proof.dataaccess.product.mapper.ProductDataAccessMapper;
 import com.tui.proof.dataaccess.product.mapper.ProductDataAccessMapperImpl;
 import com.tui.proof.domain.entity.Product;
+import com.tui.proof.domain.sampledata.OrderData;
 import com.tui.proof.domain.valueobject.ProductId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
