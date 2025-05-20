@@ -5,6 +5,7 @@ import com.tui.proof.model.OrderResponseDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -54,6 +55,19 @@ class OrderControllerTestIT {
                 .body("clientId", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getClientId())))
                 .body("orderTotal", comparesEqualTo(orderResponseDto.getOrderTotal()));
     }
+
+    @Test
+    void cannot_order_product_bad_request() {
+        RestAssured.given().contentType(ContentType.JSON)
+                .body("{\"clientId\": 1,\"quantity\": 2}")
+                .when()
+                .post("/order")
+                .then()
+                .statusCode(400)
+                .body("message",
+                        comparesEqualTo("productId no debe ser nulo"));
+    }
+
 
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(

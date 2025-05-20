@@ -5,14 +5,12 @@ import com.tui.proof.domain.exception.DomainException;
 import com.tui.proof.domain.exception.ProductNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -42,31 +40,17 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseBody
-    @ExceptionHandler(value = {ValidationException.class})
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDTO handleException(final ValidationException validationException) {
-        if (validationException instanceof ConstraintViolationException) {
-            final String violations = extractViolationsFromException((ConstraintViolationException) validationException);
-            log.error(violations, validationException);
-            return ErrorDTO.builder()
-                    .code(HttpStatus.BAD_REQUEST.getReasonPhrase())
-                    .message(violations)
-                    .build();
-        } else {
-            final String exceptionMessage = validationException.getMessage();
-            log.error(exceptionMessage, validationException);
-            return ErrorDTO.builder()
-                    .code(HttpStatus.BAD_REQUEST.getReasonPhrase())
-                    .message(exceptionMessage)
-                    .build();
-        }
-    }
-
-    private String extractViolationsFromException(ConstraintViolationException validationException) {
-        return validationException.getConstraintViolations()
-                .stream()
-                .map(ConstraintViolation::getMessage)
+    public ErrorDTO handleException(final MethodArgumentNotValidException methodArgumentNotValidException) {
+        log.error(methodArgumentNotValidException.getMessage());
+        final String message = methodArgumentNotValidException
+                .getBindingResult().getFieldErrors()
+                .stream().map(fieldError -> fieldError.getField() + " " + fieldError.getDefaultMessage())
                 .collect(Collectors.joining("--"));
+        return ErrorDTO.builder()
+                .code(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                .message(message)
+                .build();
     }
-
 }

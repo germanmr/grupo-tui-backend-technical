@@ -27,7 +27,7 @@ public class OrderController extends GlobalExceptionHandler implements OrderApi 
 
     @Override
     public ResponseEntity<OrderResponseDto> orderPilotes(@RequestBody OrderRequestDto orderRequestDto) {
-        log.info("Ordering 'pilotes' product: {} for client: {}, qunatity: {}",
+        log.info("Ordering 'pilotes' product: {} for client: {}, quantity: {}",
                 orderRequestDto.getProductId(), orderRequestDto.getClientId(), orderRequestDto.getQuantity());
         return new ResponseEntity<OrderResponseDto>(
                 this.orderMapper.orderToOrderResponseDto(
