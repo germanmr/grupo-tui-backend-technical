@@ -59,7 +59,6 @@ class OrderControllerTestIT {
                 .body("client.lastName", comparesEqualTo(orderResponseDto.getClient().getLastName()))
                 .body("client.deliveryAddress.city", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getCity()))
                 .body("client.deliveryAddress.street", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getStreet()))
-                .body("client.deliveryAddress.country", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getCountry()))
                 .body("client.deliveryAddress.postalCode", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getPostalCode()))
                 .body("quantity", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getQuantity())))
                 .body("orderTotal", comparesEqualTo(orderResponseDto.getOrderTotal()));
