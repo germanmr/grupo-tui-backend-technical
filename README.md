@@ -21,7 +21,7 @@ Linux/Mac
 
     /jacoco-aggregate/target/site/jacoco-aggregate/index.html
 
-Run OrderApplication class
+Run com.tui.proof.domain.OrderApplication class in Container module
 
 A valid request using Curl or access the [Swagger doc URL](HTTP://LOCALHOST:8181/swagger)
 
