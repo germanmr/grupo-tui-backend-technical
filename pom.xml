@@ -29,7 +29,6 @@
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <java.version>17</java.version>
         <lombok.version>1.18.38</lombok.version>
-        <springdoc-openapi-ui.version>1.5.9</springdoc-openapi-ui.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
         <spring-boot-maven-plugin.version>2.6.3</spring-boot-maven-plugin.version>
@@ -60,6 +59,19 @@
                 <artifactId>dataaccess</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--        Spring 2.7  -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.classgraph</groupId>
+                <artifactId>classgraph</artifactId>
+                <version>4.8.139</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -84,32 +96,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--        Spring 2.7  -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>${spring-cloud.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.classgraph</groupId>
-            <artifactId>classgraph</artifactId>
-            <version>4.8.139</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc-openapi-ui.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>

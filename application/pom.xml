@@ -16,7 +16,7 @@
     <properties>
         <openapi.version>7.8.0</openapi.version>
         <jackson-databind.version>0.2.1</jackson-databind.version>
-        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <springdoc-openapi-ui.version>1.8.0</springdoc-openapi-ui.version>
         <rest-assured.version>5.5.1</rest-assured.version>
         <jackson-core.version>2.19.0</jackson-core.version>
     </properties>
