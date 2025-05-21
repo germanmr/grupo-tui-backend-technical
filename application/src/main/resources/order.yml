@@ -5,7 +5,7 @@ info:
 paths:
   /order:
     post:
-      summary: Api rest that allows us to order the "pilotes" of the great Miquel Montoro
+      summary: Api rest that allows us to order the delicious "pilotes" of the great Miquel Montoro ( No tractor included)
       operationId: orderPilotes
       requestBody:
         description: A valid client, product, only "Pilotes" in stock for now, and a quantity bigger than one

@@ -23,7 +23,7 @@ Linux/Mac
 
 Run OrderApplication class
 
-A valid request
+A valid request using Curl or access the [Swagger doc URL](HTTP://LOCALHOST:8181/swagger)
 
     curl --location 'http://localhost:8181/order' \
     --header 'Content-Type: application/json' \
