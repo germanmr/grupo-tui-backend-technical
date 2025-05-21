@@ -15,7 +15,6 @@
 
     <properties>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -48,6 +47,13 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/tui/proof/api/*.*</exclude>
+                        <exclude>com/tui/proof/model/*Dto*.*</exclude>
+                        <exclude>com/tui/proof/application/rest/config/*.*</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>jacoco-site-aggregate</id>

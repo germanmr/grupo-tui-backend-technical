@@ -14,7 +14,6 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -30,22 +29,16 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>com/tui/proof/dataaccess/*Entity*.*</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
-                        <id>default</id>
-                        <phase>pre-integration-test</phase>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>post-integration-test</phase>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
@@ -54,6 +47,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

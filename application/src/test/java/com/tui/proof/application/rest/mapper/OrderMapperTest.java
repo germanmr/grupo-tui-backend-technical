@@ -9,6 +9,7 @@ import com.tui.proof.model.OrderResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class OrderMapperTest {
 
@@ -23,10 +24,14 @@ class OrderMapperTest {
     @Test
     void can_map_orderRequestDto_To_OrderRequest() {
         assertEquals(this.orderRequest, this.orderMapper.orderRequestDtoToOrderRequest(orderRequestDto));
+
+        assertNull(this.orderMapper.orderRequestDtoToOrderRequest(null));
     }
 
     @Test
     void can_map_orderProductResponse_To_OrderProductResponseDto() {
         assertEquals(this.orderResponseDto, orderMapper.orderToOrderResponseDto(order));
+
+        assertNull(orderMapper.orderToOrderResponseDto(null));
     }
 }
