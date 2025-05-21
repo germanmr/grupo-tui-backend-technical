@@ -17,7 +17,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.UUID;
 import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.comparesEqualTo;
