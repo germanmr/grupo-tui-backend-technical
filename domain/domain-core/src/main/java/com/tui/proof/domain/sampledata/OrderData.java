@@ -77,7 +77,7 @@ public interface OrderData {
         return Address.builder()
                 .country(Country.builder().value(COUNTRY_VALUE).build())
                 .city(City.builder().value(CITY_VALUE).build())
-                .postalcode(PostalCode.builder().value(POSTAL_CODE).build())
+                .postalCode(PostalCode.builder().value(POSTAL_CODE).build())
                 .street(Street.builder().value(STREET_VALUE).build())
                 .build();
     }
@@ -85,7 +85,7 @@ public interface OrderData {
     static Product anyProduct() {
         return Product.builder()
                 .productId(ProductId.builder().value(PRODUCT_ID_VALUE).build())
-                .name(Name.builder().value("S'aguiat de pilotes").build())
+                .name(Name.builder().value("PILOTES").build())
                 .price(MonetaryAmount.builder().value(PRODUCT_PRICE).build())
                 .build();
     }

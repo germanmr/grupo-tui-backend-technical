@@ -20,7 +20,7 @@ public interface OrderDataAccessData {
     String STREET_VALUE = "Carrer Sant Eduar 1";
 
     Long PRODUCT_ID_VALUE = 1L;
-    String PRODUCT_NAME_VALUE = "S'aguiat de pilotes";
+    String PRODUCT_NAME_VALUE = "PILOTES";
     BigDecimal PRICE = new BigDecimal("11.25");
 
     UUID ORDER_NUMBER = UUID.fromString("a72253bb-9ac1-497e-b116-2a54ab618966");

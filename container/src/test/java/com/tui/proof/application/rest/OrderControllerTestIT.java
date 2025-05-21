@@ -1,5 +1,6 @@
 package com.tui.proof.application.rest;
 
+import com.tui.proof.application.sampledata.OrderDtoData;
 import com.tui.proof.domain.OrderApplication;
 import com.tui.proof.model.OrderResponseDto;
 import io.restassured.RestAssured;
@@ -50,9 +51,17 @@ class OrderControllerTestIT {
                 .post("/order")
                 .then()
                 .statusCode(200)
-                .body("productId", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getProductId())))
+                .body("product.productId", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getProduct().getProductId())))
+                .body("product.name", comparesEqualTo(orderResponseDto.getProduct().getName()))
+                .body("product.price", comparesEqualTo(orderResponseDto.getProduct().getPrice()))
+                .body("client.clientId", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getClient().getClientId())))
+                .body("client.firstName", comparesEqualTo(orderResponseDto.getClient().getFirstName()))
+                .body("client.lastName", comparesEqualTo(orderResponseDto.getClient().getLastName()))
+                .body("client.deliveryAddress.city", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getCity()))
+                .body("client.deliveryAddress.street", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getStreet()))
+                .body("client.deliveryAddress.country", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getCountry()))
+                .body("client.deliveryAddress.postalCode", comparesEqualTo(orderResponseDto.getClient().getDeliveryAddress().getPostalCode()))
                 .body("quantity", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getQuantity())))
-                .body("clientId", comparesEqualTo(matcherLongUnboxing(orderResponseDto.getClientId())))
                 .body("orderTotal", comparesEqualTo(orderResponseDto.getOrderTotal()));
     }
 
@@ -71,9 +80,7 @@ class OrderControllerTestIT {
 
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(
-                Arguments.of(2L, new OrderResponseDto(
-                        UUID.fromString("a72253bb-9ac1-497e-b116-2a54ab618966"), 1L, 1L, 2L, 22.50F
-                ))
+                Arguments.of(2L, OrderDtoData.anyOrderResponseDto())
         );
     }
 

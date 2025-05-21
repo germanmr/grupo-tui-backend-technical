@@ -29,7 +29,7 @@ public interface ClientDataAccessMapper {
                         .deliveryAddress(Address.builder()
                                 .country(Country.builder().value(ce.getDeliveryAddress().getCountry()).build())
                                 .city(City.builder().value(ce.getDeliveryAddress().getCity()).build())
-                                .postalcode(PostalCode.builder().value(ce.getDeliveryAddress().getPostalCode()).build())
+                                .postalCode(PostalCode.builder().value(ce.getDeliveryAddress().getPostalCode()).build())
                                 .street(Street.builder().value(ce.getDeliveryAddress().getStreet()).build())
                                 .build())
                         .build()

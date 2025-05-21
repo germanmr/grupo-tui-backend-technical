@@ -27,8 +27,20 @@ paths:
                 $ref: "#/components/schemas/OrderResponse"
                 example:
                   orderNumber: a72253bb-9ac1-497e-b116-2a54ab618966
-                  clientId: 1
-                  productId: 1
+                  client:
+                    clientId: 1
+                    firstName: Esteve
+                    lastName: Clerch
+                    telephone: +34 972 123456
+                    address:
+                      country: España
+                      city: Das
+                      street: Carrer Sant Eduar 1
+                      postalCode: 17538
+                  product:
+                    productId: 1
+                    name: PILOTES
+                    price: 11.25
                   quantity: 2
                   orderTotal: 22.50
         "400":
@@ -84,8 +96,8 @@ components:
       type: object
       required:
         - orderNumber
-        - clientId
-        - productId
+        - client
+        - product
         - quantity
         - orderTotal
       properties:
@@ -93,14 +105,10 @@ components:
           type: string
           format: uuid
           description: The generated order number, uuid format
-        clientId:
-          type: integer
-          format: int64
-          description: The client for whom the product was order
-        productId:
-          type: integer
-          format: int64
-          description: The rated product code
+        client:
+          $ref: '#/components/schemas/Client'
+        product:
+          $ref: '#/components/schemas/Product'
         quantity:
           type: integer
           format: int64
@@ -109,6 +117,68 @@ components:
           type: number
           format: float
           description: The monetary amount according to the price and quantity
+    Client:
+      type: object
+      required:
+        - clientId
+        - firstName
+        - lastName
+        - telephone
+        - deliveryAddress
+      properties:
+        clientId:
+          type: integer
+          format: int64
+          description: The client for whom the product was order
+        firstName:
+          type: string
+          description: Client's first name
+        lastName:
+          type: string
+          description: Client's last name
+        telephone:
+          type: string
+          description: Contact phone
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      required:
+        - street
+        - postalCode
+        - city
+        - country
+      properties:
+        street:
+          type: string
+          description: The street with the number [floor-apartment number]
+        postalCode:
+          type: string
+          description: Client's postal code
+        city:
+          type: string
+          description: Client's city name
+        country:
+          type: string
+          description: Contact phone
+    Product:
+      type: object
+      required:
+        - productId
+        - name
+        - price
+      properties:
+        productId:
+          type: integer
+          format: int64
+          description: Product's code
+        name:
+          type: string
+          description: Product's name
+        price:
+          type: number
+          format: float
+          description: Unit's product price
     Error:
       type: object
       required:
